@@ -27,13 +27,13 @@ public class Main {
 
             System.out.println("1 - Print out the Pokemon that belong to the trainer");
             System.out.println("2 – List the Pokemon that don't belong to anyone, they haven't been caught");
-            System.out.print("Zadej číslo: ");
+            System.out.print("Choose number: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
             switch (choice) {
                 case 1:
-                    System.out.print("Zadej jméno trenéra: ");
+                    System.out.print("Trainer name: ");
                     String trainerName = scanner.nextLine();
                     trainerService.printPokemonsByTrainer(trainerName);
                     break;
@@ -41,7 +41,7 @@ public class Main {
                     pokemonService.printUncaughtPokemons();
                     break;
                 default:
-                    System.out.println("Neplatná volba.");
+                    System.out.println("Filed choice.");
             }
 
         } catch (SQLException e) {
