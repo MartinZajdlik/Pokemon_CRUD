@@ -1,0 +1,33 @@
+USE pokemon_database;
+
+CREATE TABLE trainers (
+    trainer_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    pokemon_count INT DEFAULT 0
+);
+
+CREATE TABLE pokemons (
+    pokemon_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    trainer_id INT,
+    FOREIGN KEY (trainer_id) REFERENCES trainers(trainer_id) ON DELETE SET NULL
+);
+
+-- Vložení trenéru
+INSERT INTO trainers (name, pokemon_count)
+VALUES ('Ash Ketchum', 0),
+('Misty', 0),
+('Brock', 0);
+
+-- Vložení pokémonu
+INSERT INTO pokemons (name, trainer_id)
+VALUES ('Bulbasaur', 1), ('Pikachu', null);
+
+-- Aktualizace počtu pokémonů
+UPDATE trainers
+SET pokemon_count = pokemon_count + 1
+WHERE trainer_id = 1;
+
+-- Zobrazení trenérů a pokémonů
+SELECT * FROM trainers;
+SELECT * FROM pokemons;
