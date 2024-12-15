@@ -27,9 +27,11 @@ public class Main {
 
             System.out.println("1 - Print out the Pokemon that belong to the trainer");
             System.out.println("2 – List the Pokemon that don't belong to anyone, they haven't been caught");
+            System.out.println("3 – Přidej nového trenéra");
             System.out.print("Choose number: ");
+
             int choice = scanner.nextInt();
-            scanner.nextLine();
+            scanner.nextLine(); // Vyčištění bufferu po zadání čísla
 
             switch (choice) {
                 case 1:
@@ -42,6 +44,20 @@ public class Main {
                     break;
                 default:
                     System.out.println("Filed choice.");
+
+                case 3: // Přidání nového trenéra
+                    System.out.print("Zadej jméno nového trenéra: ");
+                    String newTrainerName = scanner.nextLine();
+
+                    System.out.print("Zadej jména Pokémonů oddělená čárkou (např. Pikachu,Charmander): ");
+                    String pokemonInput = scanner.nextLine();
+                    String[] pokemonNames = pokemonInput.split(","); // Rozdělení na pole jmen
+
+                    trainerService.addTrainerWithPokemons(newTrainerName, pokemonNames); // Volání nové metody
+                    break;
+
+
+
             }
 
         } catch (SQLException e) {
